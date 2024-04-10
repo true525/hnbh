@@ -3,11 +3,13 @@
 <head>
   <title>日本語→ローマ字変換</title>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
       font-family: Arial, sans-serif;
       text-align: center;
       padding-top: 50px;
+      padding: 20px;
     }
     h1 {
       color: #333;
@@ -20,7 +22,8 @@
     input[type="text"] {
       padding: 5px;
       font-size: 16px;
-      width: 300px;
+      width: 100%;
+      box-sizing: border-box;
     }
     button {
       padding: 10px 20px;
@@ -29,11 +32,22 @@
       color: white;
       border: none;
       cursor: pointer;
+      margin-top: 10px;
     }
     #result {
       margin-top: 20px;
       font-size: 20px;
       font-weight: bold;
+    }
+
+    /* レスポンシブデザイン用のCSS */
+    @media (max-width: 480px) {
+      input[type="text"], button {
+        font-size: 14px;
+      }
+      #result {
+        font-size: 18px;
+      }
     }
   </style>
 </head>
