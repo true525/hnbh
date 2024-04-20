@@ -47,6 +47,13 @@
       font-size: 14px;
       color: #666;
     }
+    #version a {
+      color: inherit;
+      text-decoration: none;
+    }
+    #version a:hover {
+      text-decoration: underline;
+    }
 
     /* レスポンシブデザイン用のCSS */
     @media (max-width: 480px) {
@@ -65,7 +72,7 @@
   <input type="text" id="japanese">
   <button onclick="convertToRomaji()">ローマ字に変換</button>
   <p id="result"></p>
-  <div id="version">v2.3</div>
+  <div id="version"><a href="changelog.html" target="_blank">v3.0</a></div>
 
   <script>
     const hiraganaMap = {
