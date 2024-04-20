@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>秘密のコマンド入力</title>
+  <style>
+    /* スタイルは省略 */
+  </style>
+</head>
+<body>
+  <h1>秘密のコマンド入力</h1>
+  <input type="text" id="command" placeholder="コマンドを入力してください">
+  <button onclick="checkCommand()">送信</button>
+
+  <script>
+    function checkCommand() {
+      const command = document.getElementById("command").value;
+      const secretCommand = "森戸"; // 秘密のコマンドを設定
+
+      if (command === secretCommand) {
+        if (confirm("秘密のコマンド入力されました。ha.html に移動しますか?")) {
+          window.open("ha.html", "_blank");
+        }
+      } else {
+        alert("無効なコマンドです。");
+      }
+    }
+  </script>
+</body>
+</html>
