@@ -85,11 +85,10 @@
     <button onclick="convertToRomaji()">ローマ字に変換</button>
     <p id="result"></p>
     <div id="version"><a href="kyou.html" target="_blank">vｷｮｳ</a></div>
-    <script>
-        // 既存のJavaScriptコードはそのまま
-    </script>
-</body>
-</html>
+
+    <audio id="myAudio" preload="auto">
+        <source src="sound.mp3" type="audio/mpeg">
+    </audio>
 
   <script>
       const hiraganaMap = {
@@ -132,6 +131,10 @@
         }
       }
       document.getElementById('result').innerHTML = romaji;
+
+        window.onload = function() {
+            document.getElementById("myAudio").play();
+        }
     }
   </script>
 </body>
