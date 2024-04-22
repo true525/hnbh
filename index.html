@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>日本語→ローマ字変換</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding-top: 50px;
+            padding: 20px;
+            position: relative;
+        }
+        h1 {
+            color: #333;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        input[type="text"] {
+            padding: 5px;
+            font-size: 16px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        #version {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 14px;
+            color: #666;
+        }
+        #version a {
+            color: inherit;
+            text-decoration: none;
+        }
+        #version a:hover {
+            text-decoration: underline;
+        }
+        /* レスポンシブデザイン用のCSS */
+        @media (max-width: 480px) {
+            input[type="text"], button {
+                font-size: 14px;
+            }
+            #result {
+                font-size: 18px;
+            }
+        }
+        #loginLink {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-size: 14px;
+            color: #666;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <a href="https://example.com" id="loginLink">ログイン</a>
+    <h1>日本語→ローマ字変換</h1>
+    <label for="japanese">漢字,小文字,濁音,半濁音は使用出来ません</label>
+    <input type="text" id="japanese">
+    <button onclick="convertToRomaji()">ローマ字に変換</button>
+    <p id="result"></p>
+    <div id="version"><a href="kyou.html" target="_blank">vｷｮｳ</a></div>
+
+    <script>
+        const hiraganaMap = {
+          'あ': 'a', 'い': 'i', 'う': 'u', 'え': 'e', 'お': 'o',
+          'か': 'ka', 'き': 'ki', 'く': 'ku', 'け': 'ke', 'こ': 'ko',
+          'さ': 'sa', 'し': 'shi', 'す': 'su', 'せ': 'se', 'そ': 'so',
+          'た': 'ta', 'ち': 'chi', 'つ': 'tsu', 'て': 'te', 'と': 'to',
+          'な': 'na', 'に': 'ni', 'ぬ': 'nu', 'ね': 'ne', 'の': 'no',
+          'は': 'ha', 'ひ': 'hi', 'ふ': 'fu', 'へ': 'he', 'ほ': 'ho',
+          'ま': 'ma', 'み': 'mi', 'む': 'mu', 'め': 'me', 'も': 'mo',
+          'や': 'ya', 'ゆ': 'yu', 'よ': 'yo',
+          'ら': 'ra', 'り': 'ri', 'る': 'ru', 'れ': 're', 'ろ': 'ro',
+          'わ': 'wa', 'を': 'o', 'ん': 'n'
+        };
+
+        const katakanaMap = {
+          'ア': 'a', 'イ': 'i', 'ウ': 'u', 'エ': 'e', 'オ': 'o',
+          'カ': 'ka', 'キ': 'ki', 'ク': 'ku', 'ケ': 'ke', 'コ': 'ko',
+          'サ': 'sa', 'シ': 'shi', 'ス': 'su', 'セ': 'se', 'ソ': 'so',
+          'タ': 'ta', 'チ': 'chi', 'ツ': 'tsu', 'テ': 'te', 'ト': 'to',
+          'ナ': 'na', 'ニ': 'ni', 'ヌ': 'nu', 'ネ': 'ne', 'ノ': 'no',
+          'ハ': 'ha', 'ヒ': 'hi', 'フ': 'fu', 'ヘ': 'he', 'ホ': 'ho',
+          'マ': 'ma', 'ミ': 'mi', 'ム': 'mu', 'メ': 'me', 'モ': 'mo',
+          'ヤ': 'ya', 'ユ': 'yu', 'ヨ': 'yo',
+          'ラ': 'ra', 'リ': 'ri', 'ル': 'ru', 'レ': 're', 'ロ': 'ro',
+          'ワ': 'wa', 'ヲ': 'o', 'ン': 'n'
+        };
+
+        function convertToRomaji() {
+          const japanese = document.getElementById('japanese').value;
+          let romaji = '';
+          for (let i = 0; i < japanese.length; i++) {
+            const char = japanese.charAt(i);
+            if (hiraganaMap[char]) {
+              romaji += hiraganaMap[char];
+            } else if (katakanaMap[char]) {
+              romaji += katakanaMap[char];
+            } else {
+              romaji += char;
+            }
+          }
+          document.getElementById('result').innerHTML = romaji;
+        }
+    </script>
+</body>
+</html>
